@@ -1,0 +1,54 @@
+@import './themes/default_themes';
+@import './layout/components/components.scss';
+@import './base/base';
+
+.header {
+    // background: $bg-c1-primary;
+    color:var(--color) !important;
+    background-color: var(--bg) !important;
+    -webkit-box-shadow: 1px 9px 5px 0px rgba(42,115,221,0.59); 
+    box-shadow: 1px 9px 5px 0px rgba(42,115,221,0.59);
+
+    .container {
+        padding: 15px;
+        .d-flex {   
+            display: flex;
+            justify-content: space-between;
+            .logo {
+                font-size: 30px;
+                color: $text-c0-primary;
+                font-weight: 400;
+            }
+            .menu {
+                a {
+                    font-size: 18px;
+                    font-weight: 300;
+                    color: var(--color);
+                    margin: 0px 10px;
+                    text-decoration: none;
+                    position: relative;
+                    
+                    &::after{
+                        content: '';
+                        position: absolute;
+                        transform: scale(0,1);
+                        width: 100%;
+                        height: 3px;
+                        background-color: $bg-c0-primary;
+                        left: 0;
+                        bottom: -3px;
+                        transition: transform 0.5s;
+                    
+                    }
+                    &:hover {
+                        color: $text-c0-primary;
+                        &::after {
+                            transform: scale(1,1);
+                            transition: transform 0.5s;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
