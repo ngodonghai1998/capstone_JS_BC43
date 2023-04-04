@@ -59,7 +59,8 @@ $arrColor: ("primary": blue, "success": green, "warning": rgb(236, 124, 18), "da
 }
 
 .shadow {
-    -webkit-box-shadow: 0px -1px 6px 5px #e5edff;box-shadow: 0px -1px 6px 5px #E5EDFF;
+    -webkit-box-shadow: 0px 0px 7px 5px rgba(109,109,109,0.13); 
+    box-shadow: 0px 0px 7px 5px rgba(109,109,109,0.13);
 }
 
 
