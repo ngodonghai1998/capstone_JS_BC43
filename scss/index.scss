@@ -141,6 +141,12 @@
                     font-size: 22px;
                     font-weight: 600;
                     color: black;
+                    background-color: #f0f0f0;
+                    cursor: pointer;
+                    &:hover {
+                        color: white;
+                        background: black;
+                    }
                 }
                 
             }
@@ -266,10 +272,17 @@
                             background-color: #d1a822;
                             cursor: pointer;
                             &:hover {
-                                color: #d1a822;
+                                a {
+                                    color: #d1a822;
+                                }
                                 background: white;
                                 border: #d1a822 solid 2px;
                                 padding: 13px 48px;
+
+                            }
+                            a {
+                                text-decoration: none;
+                                color: black;
                             }
                         }
                         p {

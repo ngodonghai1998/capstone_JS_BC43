@@ -270,6 +270,12 @@ body {
   font-size: 22px;
   font-weight: 600;
   color: black;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+.carousel .d-flex .title .shoes-size button:hover {
+  color: white;
+  background: black;
 }
 .carousel .d-flex .title .prices {
   margin-bottom: 10px;
@@ -391,10 +397,16 @@ body {
   cursor: pointer;
 }
 .products .container .list-item .col .card .rating-button .btn-buy:hover {
-  color: #d1a822;
   background: white;
   border: #d1a822 solid 2px;
   padding: 13px 48px;
+}
+.products .container .list-item .col .card .rating-button .btn-buy:hover a {
+  color: #d1a822;
+}
+.products .container .list-item .col .card .rating-button .btn-buy a {
+  text-decoration: none;
+  color: black;
 }
 .products .container .list-item .col .card .rating-button p {
   padding: 0px 60px;
