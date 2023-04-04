@@ -153,7 +153,10 @@
 
             .prices {
                 margin-bottom: 10px;
+                display: flex;
+                justify-content: flex-start;
                 p {
+                    margin-right: 0px;
                     color: red;
                     font-size: 23px;
                     font-weight: 600;
@@ -171,6 +174,13 @@
                     font-weight: bold;
                     color: white;
                     background-color: #0000ff9c;
+                    cursor: pointer;
+                    &:hover {
+                        color: #0000ff9c;
+                        background-color: white;
+                        border: solid 1px #0000ff9c;
+                        padding: 0px 16px;
+                    }
                 }
                 
                 p {

@@ -18,7 +18,6 @@ function chonKichThuoc() {
         document.getElementById('size-numb-38').style.backgroundColor = black;
     }
 
-    console.log('ok');
     document.getElementById('size-numb-39').onclick = function() {
         sizeNumb()
         document.getElementById('size-numb-39').style.color = white;
@@ -44,6 +43,32 @@ function chonKichThuoc() {
     }
 }
 
+function soLuongSanPham() {
+    var soLuong = 1;
+    var soLayDuoc = +document.getElementById('get-price').innerHTML;
+    
+    document.getElementById('btn-plus').onclick = function() {
+        soLuong++;  
+        document.getElementById('quantity').innerHTML = soLuong;
+        document.getElementById('get-price').innerHTML =  soLayDuoc*soLuong;
+    }
+
+    document.getElementById('btn-minus').onclick = function() {
+        if (soLuong >= 2) {
+            soLuong--;
+            document.getElementById('quantity').innerHTML = soLuong;
+    
+        }
+        else {
+            document.getElementById('quantity').innerHTML = '1';
+        }
+        document.getElementById('get-price').innerHTML =  soLayDuoc*soLuong;
+    }
+
+    
+    
+}
+
 function renderTableSanPham(arrSanPham) {
     var htmlString1 = '';
     var htmlString2 = '';
@@ -67,15 +92,16 @@ function renderTableSanPham(arrSanPham) {
                     </div>
 
                     <div class="prices">
-                        <p>${sp.price}$</p>
+                        <p id="get-price">${sp.price}</p>
+                        <p>$</p>
                     </div>
 
                     <div class="shoes-quantity">
-                        <button class="btn-plus">
+                        <button class="btn-plus" id="btn-plus">
                             <i class="fa fa-plus"></i>
                         </button>
                         <p id="quantity">1</p>
-                        <button class="btn-plus">
+                        <button class="btn-plus" id="btn-minus">
                             <i class="fa fa-minus"></i>
                         </button>
                     </div>
@@ -91,6 +117,7 @@ function renderTableSanPham(arrSanPham) {
     document.getElementById('title00').innerHTML = htmlString2;
     
     chonKichThuoc();
+    soLuongSanPham();
 
     return htmlString1, htmlString2;
 }
@@ -120,6 +147,8 @@ window.onload = function() {
     layDanhSachSanPham();
 
 }
+
+
 
 
 
