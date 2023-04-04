@@ -1,4 +1,4 @@
-@import '../../themes/default_themes';
+@import '../../themes/default_themes_detail';
 
 .button-primary {
     @include button($fs-base, $fw-light, $text-c0-light ,$bg-c0-primary, none, 5px, 15px, $text-c0-light, $bg-c0-dark);
