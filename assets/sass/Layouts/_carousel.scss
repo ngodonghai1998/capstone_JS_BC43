@@ -1,0 +1,122 @@
+.carousel {
+  background: url("../img/slider_bg.png") bottom / cover no-repeat;
+  padding-bottom: $padding-y-carousel-c0;
+  overflow: hidden;
+
+  .container {
+    @include d-flex();
+    position: relative;
+    height: calc(53rem - $padding-y-carousel-c0);
+  }
+
+  @include md {
+    padding-bottom: $padding-y-carousel-c1;
+
+    .container {
+      height: calc(48rem - $padding-y-carousel-c1);
+    }
+  }
+
+  @include sm {
+    padding-bottom: $padding-y-carousel-c2;
+
+    .container {
+      height: calc(33rem - $padding-y-carousel-c2);
+    }
+  }
+
+  .items-container {
+    animation: fadeIn linear 1s;
+
+    .carousel__item {
+      @include d-flex();
+      align-content: center;
+      padding: 0 10rem;
+    }
+  }
+
+  .left-btn {
+    @extend %arrow-button;
+    left: -4.4rem;
+    transform: translateY(-50%) rotate(-90deg);
+    transition: all linear 0.3s;
+
+    &:hover {
+      transform: translateY(-50%) rotate(-90deg) translateY(-0.8rem);
+    }
+  }
+
+  .right-btn {
+    @extend %arrow-button;
+    right: -4.4rem;
+    transform: translateY(-50%) rotate(90deg);
+    transition: all linear 0.3s;
+
+    &:hover {
+      transform: translateY(-50%) rotate(90deg) translateY(-0.8rem);
+    }
+  }
+
+  .dots {
+    height: $dots-carousel-height;
+    width: $dots-carousel-height * 6;
+
+    .dot {
+      width: $dots-carousel-height;
+      height: $dots-carousel-height;
+      background-color: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.13);
+
+      &.active {
+        background-color: $bg-light-c1;
+      }
+    }
+  }
+}
+
+.carousel__img {
+  width: 70%;
+  height: 100%;
+
+  img {
+    height: 100%;
+    object-fit: contain;
+  }
+
+  @include sm {
+    flex-grow: 1;
+
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.carousel__info {
+  @include d-flex($fd: column, $jc: center, $ai: flex-start);
+  @include sm {
+    display: none;
+  }
+  width: 30%;
+
+  .carousel__name {
+    @include text($fz: $fz-xxl, $lh: $lh-xxl);
+    margin-bottom: 1rem;
+  }
+
+  .carousel__description {
+    @include text($fz: $fz-lg);
+    margin-bottom: 4rem;
+  }
+
+  button {
+    @include button();
+    @include lg {
+      @include button($eff: false);
+    }
+
+    a {
+      @include text($fz: $fz-lg, $c: $text-light-c0);
+    }
+  }
+}

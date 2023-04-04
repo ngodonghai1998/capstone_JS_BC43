@@ -1,0 +1,145 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+
+  @include xlg {
+    font-size: 56%;
+  }
+
+  @include lg {
+    font-size: 42%;
+  }
+
+  @include md {
+    font-size: 40%;
+  }
+
+  @include sm {
+    font-size: 38%;
+  }
+
+  @include xsm {
+    font-size: 36%;
+  }
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+  font-size: 1.6rem;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+a {
+  text-decoration: none;
+}
+
+input,
+textarea,
+button {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * $gutter-y-c3);
+  margin-left: calc(-0.5 * $gutter-x-c4);
+  margin-right: calc(-0.5 * $gutter-x-c4);
+
+  @include lg {
+    margin-left: calc(-0.5 * $gutter-x-c3);
+    margin-right: calc(-0.5 * $gutter-x-c3);
+  }
+
+  @include md {
+    margin-left: calc(-0.5 * $gutter-x-c2);
+    margin-right: calc(-0.5 * $gutter-x-c2);
+  }
+
+  @include sm {
+    margin-left: calc(-0.5 * $gutter-x-c0);
+    margin-right: calc(-0.5 * $gutter-x-c0);
+  }
+}
+
+.row > * {
+  margin-top: $gutter-y-c3;
+  padding-left: calc(0.5 * $gutter-x-c4);
+  padding-right: calc(0.5 * $gutter-x-c4);
+
+  @include lg {
+    padding-left: calc(0.5 * $gutter-x-c3);
+    padding-right: calc(0.5 * $gutter-x-c3);
+  }
+
+  @include md {
+    padding-left: calc(0.5 * $gutter-x-c2);
+    padding-right: calc(0.5 * $gutter-x-c2);
+  }
+
+  @include sm {
+    padding-left: calc(0.5 * $gutter-x-c0);
+    padding-right: calc(0.5 * $gutter-x-c0);
+  }
+}
+
+.col {
+  width: calc(100% / 3);
+
+  @media only screen and (max-width: 768px) {
+    width: 50%;
+  }
+
+  @media only screen and (max-width: 576px) {
+    width: 100%;
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+  padding: 0 $gutter-x-c1;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include lg {
+    max-width: 960px;
+  }
+
+  @include md {
+    max-width: 720px;
+  }
+
+  @include sm {
+    max-width: 540px;
+  }
+}
+
+#moveToTop {
+  position: fixed;
+  right: 10%;
+  bottom: 10%;
+  width: 20px;
+  height: 20px;
+  border: none;
+  color: $text-dark-c1;
+  font-size: $fz-mxl;
+  cursor: pointer;
+  z-index: 999;
+}

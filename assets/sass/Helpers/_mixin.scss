@@ -1,0 +1,283 @@
+// text
+// $fz: 1.4rem, $fw: 300, $c: #000
+@mixin text($fz: $fz-md, $fw: $fw-light, $lh: $lh-md, $c: $text-dark-c0) {
+  font-size: $fz;
+  font-weight: $fw;
+  line-height: $lh;
+  color: $c;
+}
+
+// display flex
+@mixin d-flex($fd: row, $fw: wrap, $jc: null, $ai: null) {
+  display: flex;
+  flex-direction: $fd;
+  flex-wrap: $fw;
+
+  @if ($fd == row) {
+    @if ($jc and $ai == null) {
+      justify-content: $jc;
+      align-items: $direction-row-align-item;
+    } @else if($jc == null and $ai) {
+      justify-content: $direction-row-justify-content;
+      align-items: $ai;
+    } @else if($jc == null and $ai == null) {
+      justify-content: $direction-row-justify-content;
+      align-items: $direction-row-align-item;
+    } @else {
+      justify-content: $jc;
+      align-items: $ai;
+    }
+  } @else if ($fd == column) {
+    @if ($jc and $ai == null) {
+      justify-content: $jc;
+      align-items: $direction-col-align-item;
+    } @else if($jc == null and $ai) {
+      justify-content: $direction-col-justify-content;
+      align-items: $ai;
+    } @else if($jc == null and $ai == null) {
+      justify-content: $direction-col-justify-content;
+      align-items: $direction-col-align-item;
+    } @else {
+      justify-content: $jc;
+      align-items: $ai;
+    }
+  }
+}
+
+// default button
+@mixin button(
+  $fz: $fz-lg,
+  $fw: $fw-light,
+  $c: $text-light-c0,
+  $bg: $bg-orange-c0,
+  $bd: transparent,
+  $br: 0,
+  $p: 1.2rem 3.5rem,
+  $c-hover: null,
+  $bg-hover: null,
+  $eff: true
+) {
+  position: relative;
+  font-size: $fz;
+  font-weight: $fw;
+  color: $c;
+  text-align: center;
+  background: $bg;
+  border: $bd;
+  border-radius: $br;
+  padding: $p;
+  transition: all ease-out 0.3s;
+  cursor: pointer;
+
+  @if ($eff) {
+    &::before {
+      content: url("../img/sneakers_1.png");
+      position: absolute;
+      top: 0;
+      bottom: 5rem;
+      left: 0;
+      right: 10rem;
+      opacity: 0;
+      transform: scale(0.07) translate(0, 0) rotate(0deg);
+      transition: all ease-out 0.6s;
+    }
+
+    &::after {
+      content: url("../img/sneakers_3.png");
+      position: absolute;
+      top: 0;
+      bottom: 2rem;
+      left: 4rem;
+      right: 0;
+      opacity: 0;
+      transform: scale(0.07) translate(0, 0) rotate(0deg);
+      transition: all ease-out 0.6s;
+    }
+
+    &:hover {
+      background-image: $bg-gra-c2;
+      transform: scale(1.1);
+
+      &::before {
+        opacity: 1;
+        transform: scale(0.1) translate(-46rem, -16rem) rotate(-16deg);
+      }
+
+      &::after {
+        opacity: 1;
+        transform: scale(0.1) translate(20rem, 14rem) rotate(-26deg);
+      }
+    }
+  } @else {
+    &::before {
+      content: "";
+    }
+
+    &::after {
+      content: "";
+    }
+  }
+}
+
+// responsive
+@mixin xsm {
+  @media (max-width: #{$xsm-width}) {
+    @content;
+  }
+}
+
+@mixin sm {
+  @media (max-width: #{$sm-width}) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (max-width: #{$md-width}) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (max-width: #{$lg-width}) {
+    @content;
+  }
+}
+
+@mixin xlg {
+  @media (max-width: #{$xlg-width}) {
+    @content;
+  }
+}
+
+// arrow button
+%arrow-button {
+  position: absolute;
+  top: 50%;
+  width: 10rem;
+  height: 6rem;
+  overflow: hidden;
+  border: none;
+  box-shadow: 0 16px 10px -17px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+
+  &::after {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    content: "";
+    width: 5rem;
+    height: 5rem;
+    background-color: transparent;
+    transform: translate(-50%, 50%) rotate(45deg);
+    border: 1px solid rgba(0, 0, 0, 0.24);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  @include sm {
+  }
+}
+
+// badge
+%badge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5rem;
+  height: 5rem;
+  font-size: $fz-xl;
+  font-weight: $fw-semibold;
+  color: $text-dark-c3;
+  background-color: $bg-light-c3;
+
+  + & {
+    margin-right: 2rem;
+  }
+
+  &:empty {
+    display: none;
+  }
+}
+
+// input
+%input-control {
+  @include text($fz: $fz-mxl, $fw: $fw-regular);
+  display: inline-block;
+  max-width: 5rem;
+  border: none;
+  background-color: transparent;
+  background-clip: padding-box;
+  padding: 0 0.8rem;
+  text-align: center;
+}
+
+// hide text
+%hide-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// show text
+%show-text {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+}
+
+// skeleton
+.skeleton-spinner {
+  @include d-flex($jc: center, $ai: center);
+  align-self: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  cursor: wait;
+  z-index: 888;
+
+  img {
+    width: 6%;
+  }
+
+  img + img {
+    margin-left: 2rem;
+  }
+
+  img:first-child {
+    transform: translateY(-6px);
+  }
+}
+
+.carts-qty {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background-color: red;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid transparent;
+  border-radius: 50%;
+}
+
+// animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes drop {
+  from {
+    transform: translateY(-10px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}

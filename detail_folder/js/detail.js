@@ -145,7 +145,10 @@ function layDanhSachSanPham() {
 window.onload = function() {
     //Sự kiện khi browser load xong dữ liệu.
     layDanhSachSanPham();
-
+    const urlParams = new URLSearchParams(window.location.search);
+    const myParam = urlParams.get('id');
+    console.log('params',myParam)
+    //call api load lên giao diện
 }
 
 
