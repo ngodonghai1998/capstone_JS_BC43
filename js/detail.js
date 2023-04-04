@@ -1,47 +1,48 @@
-console.log(axios);
+function chonKichThuoc() {
+    var gray = '#f0f0f0';
+    var red = 'red';
+    var white = 'white';
+    var black = 'black';
 
-var gray = '#f0f0f0';
-var red = 'red';
-var white = 'white';
-var black = 'black';
+    function sizeNumb() {
+        for (var i = 38; i < 43; i++) {
+            document.getElementById(`size-numb-${i}`).style.color = black;
+            document.getElementById(`size-numb-${i}`).style.backgroundColor = gray;
+        }
+    }
 
-function sizeNumb() {
-    for (var i = 38; i < 43; i++) {
-        document.getElementById(`size-numb-${i}`).style.color = black;
-        document.getElementById(`size-numb-${i}`).style.backgroundColor = gray;
+    document.getElementById('size-numb-38').onclick = function() {
+        sizeNumb()
+        console.log('ok');
+        document.getElementById('size-numb-38').style.color = white;
+        document.getElementById('size-numb-38').style.backgroundColor = black;
+    }
+
+    console.log('ok');
+    document.getElementById('size-numb-39').onclick = function() {
+        sizeNumb()
+        document.getElementById('size-numb-39').style.color = white;
+        document.getElementById('size-numb-39').style.backgroundColor = black;
+    }
+
+    document.getElementById('size-numb-40').onclick = function() {
+        sizeNumb()
+        document.getElementById('size-numb-40').style.color = white;
+        document.getElementById('size-numb-40').style.backgroundColor = black;
+    }
+
+    document.getElementById('size-numb-41').onclick = function() {
+        sizeNumb()
+        document.getElementById('size-numb-41').style.color = white;
+        document.getElementById('size-numb-41').style.backgroundColor = black;
+    }
+
+    document.getElementById('size-numb-42').onclick = function() {
+        sizeNumb()
+        document.getElementById('size-numb-42').style.color = white;
+        document.getElementById('size-numb-42').style.backgroundColor = black;
     }
 }
-
-document.getElementById('size-numb-38').onclick = function() {
-    sizeNumb()
-    document.getElementById('size-numb-38').style.color = white;
-    document.getElementById('size-numb-38').style.backgroundColor = black;
-}
-
-document.getElementById('size-numb-39').onclick = function() {
-    sizeNumb()
-    document.getElementById('size-numb-39').style.color = white;
-    document.getElementById('size-numb-39').style.backgroundColor = black;
-}
-
-document.getElementById('size-numb-40').onclick = function() {
-    sizeNumb()
-    document.getElementById('size-numb-40').style.color = white;
-    document.getElementById('size-numb-40').style.backgroundColor = black;
-}
-
-document.getElementById('size-numb-41').onclick = function() {
-    sizeNumb()
-    document.getElementById('size-numb-41').style.color = white;
-    document.getElementById('size-numb-41').style.backgroundColor = black;
-}
-
-document.getElementById('size-numb-42').onclick = function() {
-    sizeNumb()
-    document.getElementById('size-numb-42').style.color = white;
-    document.getElementById('size-numb-42').style.backgroundColor = black;
-}
-
 
 function renderTableSanPham(arrSanPham) {
     var htmlString1 = '';
@@ -58,7 +59,7 @@ function renderTableSanPham(arrSanPham) {
                     <h2>Available size</h2>
 
                     <div class="shoes-size" >
-                        <button class="size-38" id="size-numb-38"  value="38">38</button>
+                        <button class="size-38" id="size-numb-38" value="38">38</button>
                         <button class="size-39" id="size-numb-39" value="39">39</button>
                         <button class="size-40" id="size-numb-40" value="40">40</button>
                         <button class="size-41" id="size-numb-41" value="41">41</button>
@@ -66,7 +67,7 @@ function renderTableSanPham(arrSanPham) {
                     </div>
 
                     <div class="prices">
-                        <p>85$</p>
+                        <p>${sp.price}$</p>
                     </div>
 
                     <div class="shoes-quantity">
@@ -88,7 +89,8 @@ function renderTableSanPham(arrSanPham) {
 
     document.getElementById('image00').innerHTML = htmlString1;
     document.getElementById('title00').innerHTML = htmlString2;
-    // document.getElementById('title01').innerHTML = htmlString3;
+    
+    chonKichThuoc();
 
     return htmlString1, htmlString2;
 }
