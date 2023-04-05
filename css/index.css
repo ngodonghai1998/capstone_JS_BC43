@@ -261,6 +261,7 @@ table {
 }
 
 html {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   font-size: 62.5%;
   scroll-behavior: smooth;
@@ -309,6 +310,7 @@ a {
 input,
 textarea,
 button {
+  -webkit-box-shadow: none;
   box-shadow: none;
   outline: none;
   background-color: transparent;
@@ -531,8 +533,7 @@ button {
 }
 .carousel__img img {
   height: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 @media (max-width: 576px) {
   .carousel__img {
@@ -914,10 +915,8 @@ button {
 .detail .detail__img > img {
   width: 34rem;
   height: 34rem;
-  -o-object-fit: contain;
-     object-fit: contain;
-  -o-object-position: center;
-     object-position: center;
+  object-fit: contain;
+  object-position: center;
   background-color: #f8f8f8;
   padding: 4rem;
 }
@@ -935,8 +934,7 @@ button {
 .detail .detail__img .detail__img-zoom {
   width: 200%;
   height: 200%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .detail .detail__content {
   width: calc(100% - 42rem);
@@ -1171,12 +1169,6 @@ button {
 
 .input-focus-effect input:focus {
   border-color: #2979ff;
-}
-
-.input-focus-effect input:not(:-moz-placeholder-shown) + label {
-  transform: translateY(-5px);
-  font-size: 2rem;
-  top: 10px;
 }
 
 .input-focus-effect input:focus + label,

@@ -241,7 +241,7 @@
                 .card {
                     
                     @extend .shadow;
-                    margin: 0px 50px;
+                    margin: 0px 10px;
                     // animation: fade-down 0.5s;
 
 
@@ -251,19 +251,17 @@
                         width: 100%;
                     }
                     .card-body { 
-                        margin-bottom: 30px;
                         .name-price {
-                            padding: 15px; 
-                            display: flex;
-                            justify-content: space-between;
-                            align-items: flex-start;
                             .name {
-                                font-weight: 500;
-                                @extend .text-title;
+                                font-weight: 600;
+                                font-size: 25px;
                                 i {
+                                    padding-bottom: 0px;
+                                    margin-bottom: 0px;
                                     color: rgba(128, 128, 128, 0.486);
-                                    font-size: 16px;
+                                    font-size: 14px;
                                     font-style: normal;
+                                    line-height: 1.0;
                                 }
                             }
                         }
@@ -277,7 +275,7 @@
 
                         .btn-buy {
                             border: none;
-                            padding: 15px 50px;
+                            padding: 15px 10px;
                             font-size: 18px;
                             font-weight: 500;
                             color: black;

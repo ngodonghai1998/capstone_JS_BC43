@@ -138,6 +138,7 @@ table {
 }
 
 html {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   font-size: 100%;
 }
@@ -160,6 +161,7 @@ a {
 input,
 textarea,
 button {
+  -webkit-box-shadow: none;
   box-shadow: none;
   outline: none;
   background-color: transparent;

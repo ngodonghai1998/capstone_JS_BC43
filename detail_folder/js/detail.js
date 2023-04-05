@@ -13,7 +13,6 @@ function chonKichThuoc() {
 
     document.getElementById('size-numb-38').onclick = function() {
         sizeNumb()
-        console.log('ok');
         document.getElementById('size-numb-38').style.color = white;
         document.getElementById('size-numb-38').style.backgroundColor = black;
     }
@@ -69,11 +68,23 @@ function soLuongSanPham() {
     
 }
 
-function renderTableSanPham(arrSanPham) {
+function renderTableSanPham(arrSanPham, myParam) {
     var htmlString1 = '';
     var htmlString2 = '';
+    var htmlString3 = '';
+    var htmlString4 = '';
 
-    var sp = arrSanPham[0];
+    myParam = myParam - 1;
+
+    var sp = arrSanPham[myParam];
+    const arrRelated = JSON.parse(sp.relatedProducts);
+    var related0 = arrSanPham[arrRelated[0]-1];
+
+    console.log(arrRelated);
+    console.log(related0);
+
+    
+    
 
     htmlString1 = `<img src="${sp.image}" alt="..." />`;
     htmlString2 = `<h1>${sp.name}</h1>
@@ -110,19 +121,73 @@ function renderTableSanPham(arrSanPham) {
                     <button class="btn-add-to-cart">
                         Add to cart
                     </button>
-                    `; 
+    `; 
+
+    for (var index = 0; index < arrRelated.length; index++) {
+        var spRelatedIndex = arrRelated[index]-1;
+        var spRelated = arrSanPham[arrRelated[index]-1];
+        console.log(spRelatedIndex);
+
+        htmlString4 += `
+            <div class="col">
+                <div class="card item-${spRelatedIndex}" id="related-item-${spRelatedIndex}">
+                    <img src="${spRelated.image}" alt="..."/>
+
+                    <div class="card-body">
+                        <div class="name-price">
+                            <h1 class="name">
+                                ${spRelated.name}
+                                <br/>
+                                <i>${spRelated.shortDescription}</i>
+                            </h1>
+                        </div>
+
+                        <div class="rating-button">
+                            <button class="btn-buy">
+                                <a href="/detail_folder/detail.html?id=${spRelated.id}">Buy now</a>
+                            </button>
+                            <p class="price">${spRelated.price}$</p>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        `;
+    
+    }
+
+    // htmlString3 = `
+    //     <img src="${related0.image}" alt="..."/>
+
+    //     <div class="card-body">
+    //         <div class="name-price">
+    //             <h1 class="name">
+    //                 ${related0.name}
+    //                 <br/>
+    //                 <i>${related0.shortDescription}</i>
+    //             </h1>
+    //         </div>
+    //         <div class="rating-button">
+    //             <button class="btn-buy">
+    //                 <a href="/detail_folder/detail.html?id=${related0.id}">Buy now</a>
+    //             </button>
+    //             <p class="price">${related0.price}$</p>
+    //         </div>
+    //     </div>    
+    // `;
     
 
     document.getElementById('image00').innerHTML = htmlString1;
     document.getElementById('title00').innerHTML = htmlString2;
+    // document.getElementById('related-item-1').innerHTML = htmlString3;
+    document.getElementById('extra-relatedSP').innerHTML = htmlString4;
     
     chonKichThuoc();
     soLuongSanPham();
 
-    return htmlString1, htmlString2;
+    return htmlString1, htmlString2, htmlString3, htmlString4;
 }
 
-function layDanhSachSanPham() {
+function layDanhSachSanPham(myParam) {
     //Call API
     var promise = axios({
         url: 'https://shop.cyberlearn.vn/api/Product/', //Đường link API hoặc file local
@@ -132,8 +197,8 @@ function layDanhSachSanPham() {
 
     //Thành công
     promise.then(function(res){
-        renderTableSanPham(res.data.content);  
-        console.log(res.data.content[0]);      
+        renderTableSanPham(res.data.content, myParam);  
+        console.log(res.data.content);      
     })
 
     //Thất bại
@@ -144,11 +209,13 @@ function layDanhSachSanPham() {
 
 window.onload = function() {
     //Sự kiện khi browser load xong dữ liệu.
-    layDanhSachSanPham();
+    
     const urlParams = new URLSearchParams(window.location.search);
     const myParam = urlParams.get('id');
     console.log('params',myParam)
+
     //call api load lên giao diện
+    layDanhSachSanPham(myParam);
 }
 
 
